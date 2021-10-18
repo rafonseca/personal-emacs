@@ -17,6 +17,7 @@
     (if (looking-back "\"\.\/" 3)
         (insert(file-relative-name(read-file-name "Insert filename")))))
 
+;; TODO: fix funky-yank
 (defun funky-yank (beg end)
   "When yanking text on selected region, kill region and yank"
   (interactive "r")

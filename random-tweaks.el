@@ -57,8 +57,8 @@
 (general-define-key
  :keymaps 'python-mode-map
  "<f8>" 'python-pytest-dispatch
- "/" 'insert-file-name-on-key-seq
- "C-y" 'funky-yank)
+ "/" 'insert-file-name-on-key-seq)
+ ;; "C-y" 'funky-yank)                     ;
 
 
 
