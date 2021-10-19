@@ -3,7 +3,7 @@
 ;; Copyright (C) 2021  Renan Fonseca
 
 ;; Author: Renan Fonseca <renanfonseca@gmail.com>
-;; Keywords: convenience, files
+;; Keywords: convenience
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -20,14 +20,15 @@
 
 ;;; Commentary:
 
-;;
+;; Use elisp default path completion functions to provide path completion
+;; functionality. A minor mode is provided in order to toggle path completion.
 
 ;;; Code:
 
 
 (defun get-file-completions (path)
- (let* ((file (file-name-nondirectory path))
-        (dir (or (file-name-directory path) "")))
+ (let ((file (file-name-nondirectory path))
+       (dir (or (file-name-directory path) "")))
    (mapcar (lambda (i) (concat dir i )) (file-name-all-completions file dir))))
 
 
