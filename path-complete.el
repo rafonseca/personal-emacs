@@ -42,7 +42,15 @@
         (list start end collection :exclusive 'no)))))
 
 
-(add-hook 'completion-at-point-functions 'complete-file-name 0 nil)
+(define-minor-mode complete-path-mode
+  "Path completion")
+
+(defun complete-path-hook ()
+  (if complete-path-mode
+      (add-hook 'completion-at-point-functions 'complete-file-name 0 t)
+      (remove-hook 'completion-at-point-functions 'complete-file-name t)))
+
+(add-hook 'complete-path-mode-hook 'complete-path-hook)
 
 
 (provide 'path-complete)
