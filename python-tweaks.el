@@ -1,13 +1,17 @@
 ;;; python-tweaks.el -*- lexical-binding: t; -*-
 
-(setq blacken-only-if-project-is-blackened t)
+(setq blacken-only-if-project-is-blackened nil); temporary change until woovit project does not have project.toml
 (add-hook 'python-mode-hook 'blacken-mode)
+
+(defun load-yas ()
+  (yas-load-directory "~/.doom.d/snippets/"))
 
 (defun force-file-name-completion ()
   (add-hook 'completion-at-point-functions 'complete-file-name 0 'local))
 (add-hook 'python-mode-hook 'force-file-name-completion)
-
-
+(add-hook 'python-mode-hook 'tree-sitter-hl-mode)
+(add-hook 'python-mode-hook 'load-yas)
+(add-hook 'python-mode-hook 'outline-minor-mode)
 
 (defun insert-file-name-on-key-seq ()
     "This function prompt for a file and insert its name when the
@@ -28,6 +32,9 @@
         (current-kill 1))
       (yank)))
 
-
-
+(use-package lsp-pyright
+  :ensure t
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-pyright)
+                          (lsp))))  ; or lsp-deferred
 (provide 'python-tweaks)

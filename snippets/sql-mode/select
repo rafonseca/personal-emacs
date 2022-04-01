@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: Select
+# uuid: simple_select
+# key: select
+# condition: t
+# --
+
+SELECT $2 FROM $1;$0

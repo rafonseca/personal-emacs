@@ -53,7 +53,7 @@
 
 (defun i3-terminal ()
   (interactive)
-  (i3-exec "terminal" "-cd" default-directory))
+  (i3-exec "kitty" "--working-directory" default-directory))
 
 (customize-set-variable
  'display-buffer-base-action
